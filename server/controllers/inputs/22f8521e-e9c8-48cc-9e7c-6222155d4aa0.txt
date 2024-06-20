@@ -1,0 +1,6 @@
+4 4
+xor-city list-city kunal-road
+matrix-city xor-city agni-path
+list-city matrix-city pallav-maarg
+matrix-city graph-city manvendra-road
+xor-city graph-city
