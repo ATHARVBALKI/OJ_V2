@@ -107,7 +107,7 @@ public class Main {
         ? '<div style="color: green;">Result: All Test Cases Passed</div>'
         : '<div style="color: red;">Result: Wrong Answer</div>';
       verdictHtml += `<div>${data.passedTestCases} out of ${data.totalTestCases} test cases passed</div>`;
-      verdictHtml += '<div>Test Cases:</div>';
+      verdictHtml += "<div>Test Cases:</div>";
 
       // Stop loop on first failed test case
       let stopLoop = false;
@@ -117,11 +117,15 @@ public class Main {
 
         if (result.passed) {
           verdictHtml += `
-            <button style="background-color: green; color: white; padding: 5px; margin: 5px; display: inline-block;">Test Case ${index + 1}</button>
+            <button style="background-color: green; color: white; padding: 5px; margin: 5px; display: inline-block;">Test Case ${
+              index + 1
+            }</button>
           `;
         } else {
           verdictHtml += `
-            <button style="background-color: red; color: white; padding: 5px; margin: 5px; display: inline-block;">Test Case ${index + 1}</button>
+            <button style="background-color: red; color: white; padding: 5px; margin: 5px; display: inline-block;">Test Case ${
+              index + 1
+            }</button>
           `;
           stopLoop = true; // Stop loop on first failed test case
         }
@@ -163,7 +167,9 @@ public class Main {
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-4xl font-bold text-center">CodeVerse</h1>
-      <h2 className="text-3xl font-bold text-center">"Empowering Coders, One Verse at a Time !"</h2>
+      <h2 className="text-3xl font-bold text-center">
+        "Empowering Coders, One Verse at a Time !"
+      </h2>
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={() => mysubmissions(user._id, problem._id)}
@@ -216,7 +222,7 @@ public class Main {
           </div>
           <div
             className="bg-gray-900 text-white shadow-md rounded-lg mb-4"
-            style={{ height: "300px", overflowY: "auto" }}
+            style={{ height: "400px", overflowY: "auto" }} // Set a fixed height (e.g., 400px)
           >
             <Editor
               value={code}
@@ -224,37 +230,47 @@ public class Main {
               highlight={(code) => highlight(code, getLanguage())}
               padding={10}
               style={{
-                fontFamily: '"Fira code", "Fira Mono", monospace',
+                fontFamily: '"Fira Code", "Fira Mono", monospace',
                 fontSize: 12,
                 outline: "none",
                 border: "none",
                 backgroundColor: "#1e1e1e",
-                height: "100%",
-                overflowY: "auto",
+                overflowY: "auto", // Keep overflow behavior in the editor
+                minHeight: "400px", // Allow it to expand but scroll if content exceeds height
               }}
             />
           </div>
+
           <div className="flex justify-end mb-4">
             <button
               onClick={() => setActiveTab("input")}
-              className={`text-center inline-flex items-center text-white px-4 py-2 rounded-lg ${activeTab === "input" ? "bg-blue-500" : "bg-gray-700"}`}
+              className={`text-center inline-flex items-center text-white px-4 py-2 rounded-lg ${
+                activeTab === "input" ? "bg-blue-500" : "bg-gray-700"
+              }`}
             >
               Input
             </button>
             <button
               onClick={() => setActiveTab("output")}
-              className={`ml-2 text-center inline-flex items-center text-white px-4 py-2 rounded-lg ${activeTab === "output" ? "bg-blue-500" : "bg-gray-700"}`}
+              className={`ml-2 text-center inline-flex items-center text-white px-4 py-2 rounded-lg ${
+                activeTab === "output" ? "bg-blue-500" : "bg-gray-700"
+              }`}
             >
               Output
             </button>
             <button
               onClick={() => setActiveTab("verdict")}
-              className={`ml-2 text-center inline-flex items-center text-white px-4 py-2 rounded-lg ${activeTab === "verdict" ? "bg-blue-500" : "bg-gray-700"}`}
+              className={`ml-2 text-center inline-flex items-center text-white px-4 py-2 rounded-lg ${
+                activeTab === "verdict" ? "bg-blue-500" : "bg-gray-700"
+              }`}
             >
               Verdict
             </button>
           </div>
-          <div className="bg-gray-900 text-white shadow-md rounded-lg p-4" style={{ height: "100px", overflowY: "auto" }}>
+          <div
+            className="bg-gray-900 text-white shadow-md rounded-lg p-4"
+            style={{ height: "100px", overflowY: "auto" }}
+          >
             {activeTab === "input" && (
               <textarea
                 className="bg-gray-900 text-white border border-gray-700 rounded-lg w-full h-full p-2"
